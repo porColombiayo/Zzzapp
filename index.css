@@ -18,7 +18,11 @@ html{
     display: flex;
     justify-content: center;
 }
-
+.años{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
 
 .column{
     
