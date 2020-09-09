@@ -37,19 +37,32 @@ function calculateSleep() {
     var minutes = parseInt(document.getElementById("minuto").value);
 
 
-    var sleepTime = ((1440.0 + (((hours * 60) + (minutes == 00 ? minutes = 0 : minutes)) - (minHorasDeSueño * 60))) - 15) / 60;
+    var sleepTime = ((1440.0 + (((hours * 60) + (minutes == 00 ? minutes = 0 : minutes)) - (minHorasDeSueño * 60))) - 15);
     console.log("hours " + hours);
     console.log("minutes " + minutes);
     console.log("sleep time in hours: " + sleepTime);
+    var allSleepTimes = [
+        sleepTime - 90,
+        sleepTime,
+        sleepTime + 90,
+        sleepTime + 180,
+    ]
+    var result = [];
+    for (let i = 0; i < allSleepTimes.length; i++) {
+        var n = new Date(0, 0);
+        n.setMinutes(+allSleepTimes[i]);
+        result.push(n.toTimeString().slice(0, 5));
+        console.log(result);
 
-    var n = new Date(0, 0);
-    console.log("Date " + n);
-    n.setMinutes(+sleepTime * 60);
-    console.log("Date " + n.toTimeString());
-    var result = n.toTimeString().slice(0, 5);//Conversion of min to hours
-    console.log(result);
+    }
 
-    document.querySelector('#respuesta2').innerHTML = `${result}`;
+
+    document.querySelector('#respuesta1').innerHTML = `${result[0]}`;
+    document.querySelector('#respuesta2').innerHTML = `${result[1]}`;
+    document.querySelector('#respuesta3').innerHTML = `${result[2]}`;
+    document.querySelector('#respuesta4').innerHTML = `${result[3]}`;
+
+
 
 
 }
