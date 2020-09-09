@@ -26,12 +26,16 @@ function calculateSleep() {
     var hours = parseInt(wakeTimeNum[0], 10);
     var minutes = wakeTimeNum[1] ? parseInt(wakeTimeNum[1], 10) : 0;
     console.log(wakeTime);
-    var timeToGetUp = hours + minutes / 60;
-    console.log(timeToGetUp);
-    var sleepTime = ((1440.0 + (((hours * 60) + minutes) - (minHorasDeSueño * 60))) - 15) / 60;
+    console.log("hours" + hours);
+    console.log("minutes" + minutes);
 
+
+    var sleepTime = ((1440.0 + (((hours * 60) + minutes) - (minHorasDeSueño * 60))) - 15) / 60;
+    console.log("sleeptime in hours" + sleepTime);
     var n = new Date(0, 0);
+    console.log("Date " + n);
     n.setMinutes(+sleepTime * 60);
+    console.log("Date " + n.toTimeString());
     var result = n.toTimeString().slice(0, 5);
     console.log(result);
     var htmlS = `
